@@ -1,0 +1,89 @@
+.main {
+  background-color: #F6F7F8;
+  font-family: inherit;
+  
+  .colLeft {
+    background-image: url("../../public/images/bg-login.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+
+    .overlay {
+      background-color: #5e50a1ad;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .content {
+      position: absolute;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+
+      h1 {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 70px;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .colRight {
+    padding: 65px;
+
+    .title {
+      margin-bottom: 40px;
+
+      h2 {
+        margin-bottom: 20px;
+      }
+    }
+
+    .form {
+      label {
+        font-size: 13px;
+        color: #9EA0A5;
+      }
+
+      input {
+        padding: 13px;
+        color: #858D96;
+        font-size: 14px;
+        border-color: #E2E5ED;
+        border-radius: 5px;
+      }
+
+      input:focus {
+        box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+        border-color: #FBB017;
+      }
+
+      .forgotPass {
+        font-size: 14px;
+        color: #1F2A36;
+      }
+
+      .btnLogin {
+        button {
+          color: white;
+          padding: 10px 0;
+          border-radius: 5px;
+        }
+      }
+
+      .register {
+        p {
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
