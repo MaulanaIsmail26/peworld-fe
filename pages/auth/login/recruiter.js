@@ -5,6 +5,7 @@ import style from "../../../styles/pages/loginStyle.module.scss";
 import axios from "axios";
 import { setCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Recruiter() {
   const router = useRouter;
@@ -37,7 +38,7 @@ export default function Recruiter() {
       setIsLoading(false);
       setError(null);
 
-      if (!connect?.data?.data?.recruiter_id) {
+      if (connect?.data?.data?.recruiter_id) {
         setCookie("token", connect?.data?.token);
         setCookie("profile", JSON.stringify(connect?.data?.data));
       } else {
@@ -137,14 +138,14 @@ export default function Recruiter() {
                     </div>
                     {/* BUTTON LOGIN */}
                     <div className={`d-grid gap-2 mb-4 ${style.btnLogin}`}>
-                      <button
-                        className="btn btn-warning"
-                        type="button"
-                        onClick={handleSubmit}
-                        disabled={isLoading}
-                      >
-                        {isLoading ? "Loading..." : "Masuk"}
-                      </button>
+                        <button
+                          className="btn btn-warning"
+                          type="button"
+                          onClick={handleSubmit}
+                          disabled={isLoading}
+                        >
+                          {isLoading ? "Loading..." : "Masuk"}
+                        </button>
                     </div>
                     {/* REGISTER */}
                     <div className={`mt-3 register ${style.register}`}>
