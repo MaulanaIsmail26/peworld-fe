@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import style from "../../styles/pages/listStyle.module.scss";
+import style from "../../styles/pages/navbarstyle.module.scss";
 
 export default function navbar() {
   return (
-    <div>
+    <div className={style.main}>
         <nav className={`container ${style.navbar}`}>
           <nav className={`navbar bg-body-tertiary`}>
             <div className="container-fluid">

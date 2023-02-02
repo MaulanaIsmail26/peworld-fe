@@ -1,0 +1,30 @@
+.main {
+  padding: 0;
+
+  // NAVBAR
+  .containerNavbar {
+    background-color: white;
+  }
+
+  .navbar {
+    padding: 15px 0;
+
+    .icon {
+      width: 110px;
+    }
+
+    .imgRight {
+      .bell {
+        margin-right: 35px;
+      }
+
+      .mail {
+        margin-right: 35px;
+      }
+
+      .profile {
+        width: 40px;
+      }
+    }
+  }
+}
