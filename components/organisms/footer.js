@@ -1,9 +1,9 @@
 import React from 'react'
-import style from "../../styles/pages/listStyle.module.scss";
+import style from "../../styles/pages/footerStyle.module.scss";
 
 export default function footer() {
   return (
-    <div>
+    <div className={style.main}>
       <footer className={`container-fluid ${style.footer}`}>
         <div className={`container ${style.container}`}>
           <div className={`row`}>
