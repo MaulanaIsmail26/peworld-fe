@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import style from "../../styles/pages/listStyle.module.scss";
+import Link from "next/link";
 
 export default function cardJobList(props) {
   const { image, name, job, location, skills } = props;
@@ -45,9 +46,11 @@ export default function cardJobList(props) {
           </div>
           {/* BUTTON TO PROFILE */}
           <div className="col-2">
-            <button type="button" class={`btn btn-primary ${style.btn}`}>
-              Lihat Profile
-            </button>
+            <Link href={"/jobs/detail/profile"}>
+              <button type="button" class={`btn btn-primary ${style.btn}`}>
+                Lihat Profile
+              </button>
+            </Link>
           </div>
         </div>
       </section>
