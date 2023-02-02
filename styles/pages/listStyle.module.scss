@@ -74,7 +74,7 @@
 
           p {
             font-size: 13px;
-            color: #9EA0A5;
+            color: #8a8a8a;
           }
 
           .badge {
@@ -93,6 +93,11 @@
           padding: 10px 17px;
           margin-left: 55px;
           border-radius: 3px;
+        }
+
+        .btn:hover {
+          background-color: #FBB017;
+          border-color: #FBB017;
         }
       }
     }
