@@ -2,6 +2,8 @@
 import React from "react";
 import Head from "next/head";
 import style from "../../styles/pages/listStyle.module.scss";
+import Navbar from "@/components/organisms/navbar";
+import Footer from "@/components/organisms/footer";
 
 export default function list() {
   return (
@@ -15,38 +17,12 @@ export default function list() {
       <main className={style.main}>
         <div className="container-fluid p-0">
           {/* NAVBAR sticky-top fixed-top */}
-          <nav className={`container ${style.navbar}`}>
-            <nav className={`navbar bg-body-tertiary`}>
-              <div className="container-fluid">
-                <img
-                  className={style.icon}
-                  src="/images/icon.webp"
-                  alt="icon-navbar"
-                />
-                <form class="d-flex" role="search">
-                  <div className={style.imgRight}>
-                    <img
-                      className={style.bell}
-                      src="/images/bell.webp"
-                      alt="icon-bell"
-                    />
-                    <img
-                      className={style.mail}
-                      src="/images/mail.webp"
-                      alt="icon-mail"
-                    />
-                    <img
-                      className={`rounded-circle ${style.profile}`}
-                      src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
-                      alt="profile"
-                    />
-                  </div>
-                </form>
-              </div>
-            </nav>
+          <nav
+            className={`container-fluid sticky-sm-top shadow-sm ${style.containerNavbar}`}
+          >
+            <Navbar />
           </nav>
           {/* END OF NAVBAR */}
-
           {/* TITLE BAR */}
           <section className={`container-fluid ${style.titleBar}`}>
             <div className={`container ${style.subtitle}`}>
@@ -54,7 +30,6 @@ export default function list() {
             </div>
           </section>
           {/* END OF TITLE BAR */}
-
           {/* MAIN CONTENT */}
           <section className={`container-fluid ${style.mainPage}`}>
             {/* SEARCH & SORT BAR */}
@@ -107,8 +82,85 @@ export default function list() {
               </div>
             </div>
             {/* END OF SEARCH & SORT BAR */}
+
+            {/* LIST WORKER */}
+            <section
+              className={`container mb-4 rounded-1 shadow-sm ${style.list}`}
+            >
+              <div className={`row d-flex align-items-center ${style.worker}`}>
+                {/* PHOTO PROFILE */}
+                <div className="col-1">
+                  <img
+                    className="rounded-circle border border-1"
+                    src="/images/profile.webp"
+                    alt="photo-profile"
+                  />
+                </div>
+                {/* BRIEF DATA */}
+                <div className="col-8 ms-4">
+                  <div className={`${style.data}`}>
+                    <h5>Louis Tomlinson</h5>
+                    <p className="mb-2 d-block">Web developer</p>
+                    <p>Web developer</p>
+                    <button
+                      type="button"
+                      className={`btn btn-warning btn-sm me-2 ${style.badge}`}
+                      disabled
+                    >
+                      JavaScript
+                    </button>
+                  </div>
+                </div>
+                {/* BUTTON TO PROFILE */}
+                <div className="col-2">
+                  <button type="button" class={`btn btn-primary ${style.btn}`}>
+                    Lihat Profile
+                  </button>
+                </div>
+              </div>
+            </section>
+            {/* END OF LIST WORKER */}
+
+            {/* PAGINATION */}
+            <div
+              className={`container d-flex justify-content-center ${style.pagination}`}
+            >
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      1
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      2
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      3
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            {/* END OF PAGINATION */}
           </section>
           {/* END OF MAIN CONTENT */}
+          {/* FOOTER */}
+          <Footer />
+          {/* END OF FOOTER */}
         </div>
       </main>
     </>

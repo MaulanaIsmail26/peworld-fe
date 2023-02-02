@@ -2,6 +2,10 @@
   padding: 0;
 
   // NAVBAR
+  .containerNavbar {
+    background-color: white;
+  }
+
   .navbar {
     padding: 15px 0;
 
@@ -43,6 +47,7 @@
     .search {
       background-color: white;
       padding: 5px 5px 5px 0;
+      margin-bottom: 30px;
 
       .formSearch {
         input {
@@ -73,6 +78,75 @@
           background-color: #5E50A1;
           border-color: #5E50A1;
         }
+      }
+    }
+
+    .list {
+      background-color: white;
+      padding: 20px;
+
+      .worker {
+        img {
+          width: 100px;
+        }
+
+        .data {
+          border-left: 1px solid rgb(190, 190, 190);
+          padding-left: 20px;
+
+          p {
+            font-size: 13px;
+            color: #9EA0A5;
+          }
+
+          .badge {
+            padding: 5px 15px;
+            margin-top: -5px;
+            color: white;
+            font-size: 12px;
+            border-color: #FBB017;
+          }
+        }
+
+        .btn {
+          background-color: #5E50A1;
+          border-color: #5E50A1;
+          font-size: 13px;
+          padding: 10px 17px;
+          margin-left: 55px;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+
+  .footer {
+    background-color: #5E50A1;
+    padding: 40px;
+
+    .container {
+      padding: 0;
+
+      .foot {
+        border-bottom: 2px solid white;
+        padding: 0 0 35px 0;
+      }
+    }
+
+    img {
+      width: 120px;
+      margin-bottom: 25px;
+    }
+
+    p {
+      width: 300px;
+      line-height: 30px;
+      color: white;
+    }
+
+    .copyright {
+      p {
+        color: white;
       }
     }
   }
