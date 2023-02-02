@@ -1,0 +1,92 @@
+.main {
+  font-family: inherit;
+  // NAVBAR
+  .containerNavbar {
+    background-color: white;
+  }
+
+  .profile {
+    background-color: rgb(243, 243, 243);
+    padding: 40px 0;
+
+    .cardProfile {
+      background-color: white;
+
+      .overlay {
+        height: 200px;
+        background-color: #5E50A1;
+        border-radius: 8px;
+      }
+
+      .profilePhoto {
+        margin-top: -75px;
+
+        img {
+          width: 150px;
+          border: 5px solid #5E50A1;
+        }
+      }
+
+      .profileData {
+        padding: 20px 0;
+
+        .job {
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        .addressProfession {
+          color: #9EA0A5;
+        }
+
+        .bio {
+          width: 600px;
+          margin: auto;
+          font-weight: 400;
+          line-height: 28px;
+        }
+      }
+
+      .buttonHire {
+        button {
+          font-size: 14px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-radius: 7px;
+          font-weight: 500;
+          color: white;
+        }
+
+        button:hover {
+          background-color: #5E50A1;
+          border-color: #5E50A1;
+        }
+      }
+
+      .skillContact {
+        .skills {
+          h4 {
+            color: #757575;
+          }
+        }
+        .badge {
+          padding: 5px 15px;
+          color: white;
+          font-size: 12px;
+          border-color: #FBB017;
+        }
+
+        .contact {
+          p {
+            color: #9EA0A5;
+            font-size: 15px;
+          }
+        }
+      }
+
+      .result {
+        margin-top: -40px;
+      }
+    }
+  }
+}

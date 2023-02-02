@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Head from "next/head";
 import style from "../../../styles/pages/detailStyle.module.scss";
@@ -14,14 +15,202 @@ export default function detail() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${style.main}`}>
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0 clearfix">
           {/* NAVBAR sticky-top fixed-top */}
           <nav
-            className={`container-fluid sticky-sm-top shadow-sm ${style.containerNavbar}`}
+            className={`container-fluid sticky-sm-top shadow ${style.containerNavbar}`}
           >
             <Navbar />
           </nav>
           {/* END OF NAVBAR */}
+
+          {/* PROFILE */}
+          <div className={`container-fluid ${style.profile}`}>
+            <div className={`container p-0 pb-5 shadow-sm ${style.cardProfile}`}>
+              <div className={style.overlay} />
+              <div className={`row ${style.profilePhoto}`}>
+                <div className="col-12 d-flex justify-content-center">
+                  <img
+                    className="rounded-circle"
+                    src="/images/profile.webp"
+                    alt="profile"
+                  />
+                </div>
+              </div>
+              <div className={`row ${style.profileData}`}>
+                <div className="col-12 ">
+                  <h2 className="text-center mb-2">Louis Tomlinsoon</h2>
+                  <p className={`text-center mb-2 ${style.job}`}>
+                    Web developer
+                  </p>
+                  <p className={`text-center ${style.addressProfession}`}>
+                    Purwokerto, Jawa Tengah | Freelancer
+                  </p>
+                  <p className={`text-center ${style.bio}`}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vestibulum erat orci, mollis nec gravida sed, ornare quis
+                    urna. Curabitur eu lacus fringilla, vestibulum risus at.
+                  </p>
+                </div>
+              </div>
+              {/* BUTTON HIRE */}
+              <div className={`row mb-4 ${style.buttonHire}`}>
+                <div className="d-grid gap-2 col-3 mx-auto ">
+                  <button className="btn btn-warning" type="button">
+                    Hire
+                  </button>
+                </div>
+              </div>
+              {/* SKILLS AND CONTACT */}
+              <div className={`row ${style.skillContact}`}>
+                {/* SKILLS */}
+                <div
+                  className={`col-4 offset-2 border-end pe-5 p-0 text-end ${style.skills}`}
+                >
+                  <h4 className="mb-3 mt-1">Skills</h4>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm ms-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    JavaScript
+                  </button>
+                </div>
+                {/* CONTACT */}
+                <div className={`col-6 border-start ps-5 p-0 ${style.contact}`}>
+                  <div className="row">
+                    <div className="col-1">
+                      <img
+                        className="mt-1"
+                        src="/images/mail.webp"
+                        alt="mail"
+                      />
+                    </div>
+                    <div className="col-10">
+                      <p className="mt-1">Louistommo@gmail.com</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-1">
+                      <img
+                        className="mt-1"
+                        src="/images/instagram.webp"
+                        alt="mail"
+                      />
+                    </div>
+                    <div className="col-10">
+                      <p className="mt-1">@Louist91</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-1">
+                      <img
+                        className="mt-1"
+                        src="/images/github.webp"
+                        alt="mail"
+                      />
+                    </div>
+                    <div className="col-10">
+                      <p className="mt-1">@Louistommo</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-1">
+                      <img
+                        className="mt-1"
+                        src="/images/gitlab.webp"
+                        alt="mail"
+                      />
+                    </div>
+                    <div className="col-10">
+                      <p className="mt-1">@Louistommo91</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* END OF SKILL AND CONTACT */}
+
+              {/* PORTFOLIO */}
+              <div className={`row p-5 ${style.portfolio}`}>
+                <div className="col-12">
+                  <ul className="nav nav-tabs">
+                    <li className="nav-item">
+                      <a
+                        className="nav-link active"
+                        aria-current="page"
+                        href="#"
+                      >
+                        Portofolio
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link disabled"
+                        aria-current="page"
+                        href="#"
+                      >
+                        Pengalaman kerja
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {/* RESULT PORTOFOLIO */}
+              <div className={`row ps-5 pe-5 ${style.result}`}>
+                <div className="col-3 me-5">
+                  <div
+                    className="card border-0 mt-4"
+                    style={{ width: "18rem" }}
+                  >
+                    <img
+                      src="/images/portofolio1.png"
+                      className="card-img-top"
+                      alt="..."
+                    />
+                    <div className="card-body text-center">
+                      <p className="card-title mt-0">Social media app</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-3 me-5">
+                  <div
+                    className="card border-0 mt-4"
+                    style={{ width: "18rem" }}
+                  >
+                    <img
+                      src="/images/portofolio2.jpg"
+                      className="card-img-top"
+                      alt="..."
+                    />
+                    <div className="card-body text-center">
+                      <p className="card-title mt-0">Remainder app</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-3 me-5">
+                  <div
+                    className="card border-0 mt-4"
+                    style={{ width: "18rem" }}
+                  >
+                    <img
+                      src="/images/portofolio3.png"
+                      className="card-img-top"
+                      alt="..."
+                    />
+                    <div className="card-body text-center">
+                      <p className="card-title mt-0">Project management web</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* END OF PORTFOLIO */}
+            </div>
+          </div>
+          {/* END OF PROFILE */}
+
+          {/* FOOTER */}
+          <Footer />
+          {/* END OF FOOTER */}
         </div>
       </main>
     </>
