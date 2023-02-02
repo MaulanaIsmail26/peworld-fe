@@ -5,8 +5,9 @@ import style from "../../../styles/pages/detailStyle.module.scss";
 import Navbar from "@/components/organisms/navbar";
 import Footer from "@/components/organisms/footer";
 import { useRouter } from "next/router";
+import axios from "axios";
 
-export default function detail() {
+export default function detail(props) {
   const router = useRouter;
   // const {
   //   query: { slug },
@@ -82,6 +83,34 @@ export default function detail() {
                     disabled
                   >
                     JavaScript
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm ms-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    PHP
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm ms-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    Ruby
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm ms-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    postgres
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm ms-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    Bootstrap
                   </button>
                 </div>
                 {/* CONTACT */}
@@ -225,16 +254,21 @@ export default function detail() {
   );
 }
 
-export async function getServerSideProps(context) {
-  const jobList = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list`
-  );
+// export async function getServerSideProps(context) {
+//   const {
+//     query: { slug },
+//   } = context;
+//   const jobList = await axios.get(
+//     `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list`
+//   );
 
-  const convertData = jobList.data;
+//   const convertData = jobList.data?.find(
+//     (res) => res?.["user.fullname"] === slug
+//   );
 
-  return {
-    props: {
-      jobList: convertData,
-    }, // will be passed to the page component as props
-  };
-}
+//   return {
+//     props: {
+//       jobList: convertData,
+//     }, // will be passed to the page component as props
+//   };
+// }
