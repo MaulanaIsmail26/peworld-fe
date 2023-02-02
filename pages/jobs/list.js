@@ -9,30 +9,6 @@ import Footer from "@/components/organisms/footer";
 import axios from "axios";
 
 export default function list(props) {
-  let [keyword, setKeyword] = React.useState("");
-  let [Job, setJob] = React.useState([]);
-
-  // FEATURE SEARCH Job
-  const fetchByKeyword = () => {
-    if (keyword && keyword !== "") {
-      axios
-        .get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?keyword=${keyword}`
-        )
-        .then(({ data }) => {
-          console.log(data?.data?.rows);
-          setJob(data?.data.rows);
-        })
-        .catch(() => setJob([]))
-    } else {
-      axios
-        .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list`)
-        .then(({ data }) => {
-          setJob(data?.data.rows);
-        })
-        .catch(() => setJob([]))
-    }
-  };
 
   const { jobList } = props;
   return (
@@ -75,14 +51,14 @@ export default function list(props) {
                     className="form-control d-inline border-0"
                     id="exampleFormControlInput1"
                     placeholder="Search for any skill"
-                    onChange={(e) => {
-                      setKeyword(e.target.value);
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        fetchByKeyword();
-                      }
-                    }}
+                    // onChange={(e) => {
+                    //   setKeyword(e.target.value);
+                    // }}
+                    // onKeyDown={(e) => {
+                    //   if (e.key === "Enter") {
+                    //     fetchByKeyword();
+                    //   }
+                    // }}
                   />
                 </div>
                 {/* BTN SORT */}
@@ -124,19 +100,6 @@ export default function list(props) {
 
             {/* LIST WORKER */}
             {jobList?.data?.rows.map((item, key) => (
-              <React.Fragment key={key}>
-                <CardJobList
-                  image={item?.["user.photo_profile"]}
-                  name={item?.[`user.fullname`]}
-                  job={item?.job}
-                  location={item?.domicile}
-                  skills={item?.skills}
-                />
-              </React.Fragment>
-            ))}
-
-            {/* LIST WORKER */}
-            {Job?.map((item, key) => (
               <React.Fragment key={key}>
                 <CardJobList
                   image={item?.["user.photo_profile"]}
@@ -201,8 +164,6 @@ export async function getServerSideProps(context) {
   const jobList = await axios.get(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list`
   );
-
-  
 
   const convertData = jobList.data;
 
