@@ -3,17 +3,11 @@
   font-family: inherit;
   
   .colLeft {
-    background-image: url("../../public/images/bg-login.png");
+    background-image: url("../../public/images/bg-login.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
     position: relative;
-
-    .overlay {
-      background-color: #5e50a1ad;
-      height: 100vh;
-      width: 100%;
-    }
 
     .content {
       position: absolute;
