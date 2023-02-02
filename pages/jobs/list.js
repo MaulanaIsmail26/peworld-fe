@@ -23,6 +23,7 @@ export default function list() {
             <Navbar />
           </nav>
           {/* END OF NAVBAR */}
+
           {/* TITLE BAR */}
           <section className={`container-fluid ${style.titleBar}`}>
             <div className={`container ${style.subtitle}`}>
@@ -30,6 +31,7 @@ export default function list() {
             </div>
           </section>
           {/* END OF TITLE BAR */}
+
           {/* MAIN CONTENT */}
           <section className={`container-fluid ${style.mainPage}`}>
             {/* SEARCH & SORT BAR */}
@@ -158,6 +160,7 @@ export default function list() {
             {/* END OF PAGINATION */}
           </section>
           {/* END OF MAIN CONTENT */}
+          
           {/* FOOTER */}
           <Footer />
           {/* END OF FOOTER */}
