@@ -155,7 +155,7 @@ export default function Recruiter() {
                           href={"/auth/register/recruiter"}
                           className="text-warning"
                         >
-                          Masuk disini
+                          Daftar disini
                         </Link>
                       </p>
                     </div>
