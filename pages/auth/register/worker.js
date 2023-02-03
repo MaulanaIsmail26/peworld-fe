@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import style from "../../../styles/pages/registerStyle.module.scss";
+import style from "../../../styles/pages/registerstyle.module.scss";
 import { reactStrictMode } from "@/next.config";
 
 export default function recruiter() {
