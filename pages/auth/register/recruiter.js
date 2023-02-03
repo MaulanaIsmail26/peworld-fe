@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
 import Head from "next/head";
-import style from "../../../styles/pages/registerStyle.module.scss";
+import style from "../../../styles/pages/registerstyle.module.scss";
 import axios from "axios";
 import Link from "next/link";
 
