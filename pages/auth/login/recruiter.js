@@ -138,20 +138,25 @@ export default function Recruiter() {
                     </div>
                     {/* BUTTON LOGIN */}
                     <div className={`d-grid gap-2 mb-4 ${style.btnLogin}`}>
-                        <button
-                          className="btn btn-warning"
-                          type="button"
-                          onClick={handleSubmit}
-                          disabled={isLoading}
-                        >
-                          {isLoading ? "Loading..." : "Masuk"}
-                        </button>
+                      <button
+                        className="btn btn-warning"
+                        type="button"
+                        onClick={handleSubmit}
+                        disabled={isLoading}
+                      >
+                        {isLoading ? "Loading..." : "Masuk"}
+                      </button>
                     </div>
                     {/* REGISTER */}
                     <div className={`mt-3 register ${style.register}`}>
                       <p className="text-center">
                         Anda belum punya akun?{" "}
-                        <a className="text-warning">Daftar disini</a>
+                        <Link
+                          href={"/auth/register/recruiter"}
+                          className="text-warning"
+                        >
+                          Masuk disini
+                        </Link>
                       </p>
                     </div>
                   </form>
