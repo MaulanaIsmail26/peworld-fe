@@ -1,0 +1,133 @@
+.main {
+  .containerNavbar {
+      background-color: white;
+    }
+
+  .editProfile {
+    background-color: rgb(243, 243, 243);
+    padding: 40px 0;
+
+    .cardHead {
+      background-color: white;
+
+      .overlay {
+        height: 200px;
+        background-color: #5E50A1;
+        border-radius: 8px;
+      }
+
+      .profilePhoto {
+        margin-top: -75px;
+
+        img {
+          width: 150px;
+          border: 5px solid #5E50A1;
+        }
+      }
+
+      .profileData {
+        padding: 20px 0 10px 0;
+
+        .job {
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        .addressProfession {
+          color: #9EA0A5;
+        }
+      }
+
+      .buttonHire {
+        button {
+          font-size: 14px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-radius: 7px;
+          font-weight: 500;
+          color: white;
+        }
+
+        button:hover {
+          background-color: #5E50A1;
+          border-color: #5E50A1;
+        }
+      }
+    }
+
+    .cardPersonalData {
+      background-color: white;
+
+      .form {
+        input, textarea {
+          padding: 13px;
+          color: #858D96;
+          font-size: 14px;
+          border-color: #E2E5ED;
+          border-radius: 5px;
+        }
+      
+        input:focus, textarea:focus {
+          box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+          border-color: #5E50A1;
+        }
+      }
+    }
+
+    .cardSkills {
+      background-color: white;
+
+      .skills {
+        input, textarea {
+          padding: 13px;
+          color: #858D96;
+          font-size: 14px;
+          border-color: #E2E5ED;
+          border-radius: 5px;
+        }
+      
+        input:focus, textarea:focus {
+          box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+          border-color: #5E50A1;
+        }
+      }
+    }
+
+    .cardPengalaman {
+      background-color: white;
+
+      .posisi {
+        input, textarea {
+          padding: 13px;
+          color: #858D96;
+          font-size: 14px;
+          border-color: #E2E5ED;
+          border-radius: 5px;
+        }
+      
+        input:focus, textarea:focus {
+          box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+          border-color: #5E50A1;
+        }
+      }
+
+      .button {
+        button {
+          border-color: #5E50A1;
+          color: #5E50A1;
+          font-weight: 500;
+          padding: 10px 0 10px 0;
+        }
+
+        button:hover {
+          border-color: #5E50A1;
+          background-color: #5E50A1;
+          color: white;
+          font-weight: 500;
+          padding: 10px 0 10px 0;
+        }
+      }
+      
+    }
+  }
+}
