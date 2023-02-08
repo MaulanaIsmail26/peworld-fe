@@ -9,8 +9,24 @@ import Footer from "@/components/organisms/footer";
 import axios from "axios";
 
 export default function list(props) {
+  const {
+    jobList: {
+      data: { rows, count },
+    },
+  } = props;
 
-  const { jobList } = props;
+  const [data, setData] = React.useState(rows);
+  const [page, setPage] = React.useState(1);
+  const [total, setTotal] = React.useState(Math.ceil(count / 3));
+
+  const getDataByPage = async (_page) => {
+    const jobList = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=${_page}&order=ASC`
+    );
+    const convertData = jobList.data;
+    setData(convertData.data.rows);
+  };
+
   return (
     <>
       <Head>
@@ -99,7 +115,7 @@ export default function list(props) {
             {/* END OF SEARCH & SORT BAR */}
 
             {/* LIST WORKER */}
-            {jobList?.data?.rows.map((item, key) => (
+            {data?.map((item, key) => (
               <React.Fragment key={key}>
                 <CardJobList
                   image={item?.["user.photo_profile"]}
@@ -119,31 +135,51 @@ export default function list(props) {
             >
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item">
+                  {/* <li
+                    class="page-item"
+                    onClick={() => {
+                      if (page > 1) {
+                        getDataByPage(page - 1);
+                        setPage(page - 1);
+                      }
+                    }}
+                  >
                     <a class="page-link" href="#" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      1
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      2
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      3
-                    </a>
-                  </li>
-                  <li class="page-item">
+                  </li> */}
+                  {[...new Array(total)].map((item, key) => {
+                    let currentPage = ++key;
+                    return (
+                      <li
+                        class={`page-item ${
+                          page === currentPage ? "active" : ""
+                        }`}
+                        key={currentPage}
+                        onClick={() => {
+                          getDataByPage(currentPage);
+                          setPage(currentPage);
+                        }}
+                      >
+                        <a class="page-link" href="#">
+                          {currentPage}
+                        </a>
+                      </li>
+                    );
+                  })}
+                  {/* <li
+                    class="page-item"
+                    onClick={() => {
+                      if (page < total) {
+                        getDataByPage(page + 1);
+                        setPage(page + 1);
+                      }
+                    }}
+                  >
                     <a class="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </nav>
             </div>
@@ -162,7 +198,7 @@ export default function list(props) {
 
 export async function getServerSideProps(context) {
   const jobList = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=1&order=ASC`
   );
 
   const convertData = jobList.data;
