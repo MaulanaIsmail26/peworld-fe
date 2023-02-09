@@ -2,8 +2,49 @@ import React from "react";
 import Head from "next/head";
 import style from "../../../styles/pages/registerstyle.module.scss";
 import { reactStrictMode } from "@/next.config";
+import Link from "next/link";
+import axios from "axios";
+import { setCookie, getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
-export default function recruiter() {
+export default function Recruiter() {
+  const router = useRouter();
+  const [fullname, setFullname] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phone_number, setPhone_number] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    let checkIsLogin = getCookie("token") && getCookie("profile");
+
+    if (checkIsLogin) {
+      router.replace("/jobs/list");
+    }
+  }, []);
+
+  const handleSubmit = async () => {
+    try {
+      setIsLoading(true);
+
+      const connect = await axios.post("/api/registerGeneral", {
+        fullname,
+        email,
+        phone_number,
+        password,
+      });
+
+      setIsLoading(false);
+      setError(null);
+    } catch (error) {
+      setError(
+        error?.response?.data?.messages ?? "Something wrong in our server"
+      );
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -36,6 +77,23 @@ export default function recruiter() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                     euismod ipsum et dui rhoncus auctor.
                   </p>
+                  {/* ALERT ERROR HANDLING */}
+                  <div className="alert-error">
+                    {error ? (
+                      <div
+                        class="alert alert-danger text-center"
+                        role="alert"
+                        style={{
+                          fontSize: "14px",
+                          border: "0",
+                          borderRadius: "15px",
+                          marginBottom: "-15px",
+                        }}
+                      >
+                        {error}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
                 {/* FORM LOGIN */}
                 <div className={style.form}>
@@ -50,6 +108,7 @@ export default function recruiter() {
                         id="name"
                         aria-describedby="emailHelp"
                         placeholder="Masukan nama panjang"
+                        onChange={(e) => setFullname(e.target.value)}
                       />
                     </div>
                     <div className="mb-3">
@@ -62,6 +121,7 @@ export default function recruiter() {
                         id="email"
                         aria-describedby="emailHelp"
                         placeholder="Masukan alamat email"
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                     <div className="mb-3">
@@ -74,6 +134,7 @@ export default function recruiter() {
                         id="phone"
                         aria-describedby="emailHelp"
                         placeholder="Masukan no handphone"
+                        onChange={(e) => setPhone_number(e.target.value)}
                       />
                     </div>
                     <div className="mb-4">
@@ -85,6 +146,7 @@ export default function recruiter() {
                         className="form-control"
                         id="exampleInputPassword1"
                         placeholder="Masukan kata sandi"
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
                     <div className="mb-5">
@@ -96,19 +158,30 @@ export default function recruiter() {
                         className="form-control"
                         id="exampleInputPassword1"
                         placeholder="Masukan konfirmasi kata sandi"
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
                     {/* BUTTON LOGIN */}
                     <div className={`d-grid gap-2 mb-4 ${style.btnLogin}`}>
-                      <button className="btn btn-warning" type="button">
-                        Masuk
+                      <button
+                        className="btn btn-warning"
+                        type="button"
+                        onClick={handleSubmit}
+                        disabled={isLoading}
+                      >
+                        {isLoading ? "Loading..." : "Masuk"}
                       </button>
                     </div>
                     {/* REGISTER */}
                     <div className={`mt-3 register ${style.register}`}>
                       <p className="text-center">
                         Anda sudah punya akun?{" "}
-                        <a className="text-warning">Masuk disini</a>
+                        <Link
+                          href={"/auth/login/recruiter"}
+                          className="text-warning"
+                        >
+                          Masuk disini
+                        </Link>
                       </p>
                     </div>
                   </form>

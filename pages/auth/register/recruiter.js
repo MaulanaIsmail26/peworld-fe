@@ -4,8 +4,11 @@ import Head from "next/head";
 import style from "../../../styles/pages/registerstyle.module.scss";
 import axios from "axios";
 import Link from "next/link";
+import { setCookie, getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 export default function recruiter() {
+  const router = useRouter();
   const [fullname, setFullname] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [company, setCompany] = React.useState("");
@@ -14,6 +17,14 @@ export default function recruiter() {
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    let checkIsLogin = getCookie("token") && getCookie("profile");
+
+    if (checkIsLogin) {
+      router.replace("/jobs/list");
+    }
+  }, []);
 
   const handleSubmit = async () => {
     try {
