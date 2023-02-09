@@ -18,10 +18,20 @@ export default function list(props) {
   const [data, setData] = React.useState(rows);
   const [page, setPage] = React.useState(1);
   const [total, setTotal] = React.useState(Math.ceil(count / 3));
+  // const [keyword, setKeyword] = React.useState("");
+  // const [sort, setSort] = React.useState("");
 
   const getDataByPage = async (_page) => {
     const jobList = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=${_page}&order=ASC`
+    );
+    const convertData = jobList.data;
+    setData(convertData.data.rows);
+  };
+
+  const getDataBySort = async (_sort) => {
+    const jobList = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=10&sortBy=${_sort}`
     );
     const convertData = jobList.data;
     setData(convertData.data.rows);
@@ -72,7 +82,7 @@ export default function list(props) {
                     // }}
                     // onKeyDown={(e) => {
                     //   if (e.key === "Enter") {
-                    //     fetchByKeyword();
+                    //     data;
                     //   }
                     // }}
                   />
@@ -87,20 +97,19 @@ export default function list(props) {
                     <select
                       className="form-select border-0"
                       aria-label="Default select example"
+                      onChange={(e) => {
+                        getDataBySort(e.target.value);
+                      }}
                     >
                       <option selected disabled>
                         Kategori
                       </option>
                       <option value="name_asc">Sortir berdasarkan nama</option>
-                      <option value="name_desc">
-                        Sortir berdasarkan Skill
-                      </option>
-                      <option value="release_asc">
+                      <option value="skills">Sortir berdasarkan Skill</option>
+                      <option value="domicile">
                         Sortir berdasarkan Lokasi
                       </option>
-                      <option value="release_desc">
-                        Sortir berdasarkan freelance
-                      </option>
+                      <option value="job">Sortir berdasarkan job</option>
                       <option value="release_desc">
                         Sortir berdasarkan fulltime
                       </option>
@@ -161,9 +170,7 @@ export default function list(props) {
                           setPage(currentPage);
                         }}
                       >
-                        <a class="page-link" href="#">
-                          {currentPage}
-                        </a>
+                        <a class="page-link">{currentPage}</a>
                       </li>
                     );
                   })}
@@ -198,7 +205,7 @@ export default function list(props) {
 
 export async function getServerSideProps(context) {
   const jobList = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=1&order=ASC`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=1&order=ASC&sortBy=id`
   );
 
   const convertData = jobList.data;
