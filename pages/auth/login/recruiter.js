@@ -40,12 +40,8 @@ export default function Recruiter() {
       setIsLoading(false);
       setError(null);
 
-      if (connect?.data?.data?.recruiter_id) {
-        setCookie("token", connect?.data?.token);
-        setCookie("profile", JSON.stringify(connect?.data?.data));
-      } else {
-        setError("Can't login in this area");
-      }
+      setCookie("token", connect?.data?.token);
+      setCookie("profile", JSON.stringify(connect?.data?.data));
     } catch (error) {
       setError(
         error?.response?.data?.messages ?? "Something wrong in our server"
