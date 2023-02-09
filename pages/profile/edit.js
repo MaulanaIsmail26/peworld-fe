@@ -46,8 +46,11 @@ export default function edit() {
                   <p className={`text-center mb-2 ${style.job}`}>
                     Web developer
                   </p>
+                  <p className={`text-center mb-1 ${style.addressProfession}`}>
+                    Purwokerto, Jawa Tengah
+                  </p>
                   <p className={`text-center ${style.addressProfession}`}>
-                    Purwokerto, Jawa Tengah | Freelancer
+                    Freelancer
                   </p>
                 </div>
               </div>
