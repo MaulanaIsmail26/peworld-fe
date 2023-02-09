@@ -15,7 +15,7 @@ export default function edit() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={style.main}>
-        <div className="container-fluid p-0">
+        <div className={`container-fluid p-0 ${style.container}`}>
           {/* NAVBAR sticky-top fixed-top */}
           <nav
             className={`container-fluid sticky-sm-top shadow ${style.containerNavbar}`}
@@ -25,8 +25,150 @@ export default function edit() {
           {/* END OF NAVBAR */}
 
           {/* EDIT PROFILE */}
-          <div className={`container-fluid px-0 ${style.profileCard}`}>
-            
+          <div className={`container px-0 pt-5 pb-5`}>
+            <div className={`row`}>
+              <div
+                className={`col-4 py-4 px-4 rounded-2 shadow-sm ${style.profileCard}`}
+              >
+                {/* PHOTO PROFILE */}
+                <div className="d-flex justify-content-center mb-4">
+                  <img
+                    className="rounded-circle"
+                    src="/images/profile.webp"
+                    alt="profile"
+                  />
+                </div>
+                {/* DATA DIRI */}
+                <div className={`${style.dataDiri}`}>
+                  <h3>Louis Tomlinson</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vestibulum erat orci.
+                  </p>
+                  <p className={`${style.address}`}>
+                    Address : Purwokerto, Jawa Tengah
+                  </p>
+                  <p className={`mb-4 ${style.bio}`}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vestibulum erat orci, mollis nec gravida sed, ornare quis
+                    urna. Curabitur eu lacus fringilla, vestibulum risus at.
+                  </p>
+                  <h5 className="mb-3">Skills</h5>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm me-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    JavaScript
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm me-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    PHP
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm me-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    Ruby
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm me-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    postgres
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-warning btn-sm me-3 mb-3 ${style.badge}`}
+                    disabled
+                  >
+                    Bootstrap
+                  </button>
+                </div>
+              </div>
+              <div className={`col-8 px-5 ${style.form}`}>
+                <div className={style.title}>
+                  <h2>Hubungi Lous Tomlinson</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                    euismod ipsum et dui rhoncus auctor.
+                  </p>
+                </div>
+                {/* FORM LOGIN */}
+                <div>
+                  <form className={style.form}>
+                    <div className="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">
+                        Tujuan tentang tugas ini
+                      </label>
+                      <select
+                        className="form-select border-0"
+                        aria-label="Default select example"
+                      >
+                        <option selected disabled></option>
+                        <option value="name_asc">Projek</option>
+                      </select>
+                    </div>
+                    <div className="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">
+                        Nama lengkap
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        placeholder="Masukan nama lengkap"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label for="exampleInputPassword1" className="form-label">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Masukan email"
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label for="phone" class="form-label">
+                        No handphone
+                      </label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="phone"
+                        aria-describedby="emailHelp"
+                        placeholder="Masukan no handphone"
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label for="deskripsiSingkat" class="form-label">
+                        Deskripsi
+                      </label>
+                      <textarea
+                        class="form-control"
+                        id="deskripsiSingkat"
+                        rows="3"
+                        placeholder="Deskripsikan/jelaskan lebih detail"
+                      ></textarea>
+                    </div>
+                    {/* BUTTON LOGIN */}
+                    <div className={`d-grid gap-2 mt-5 ${style.btnLogin}`}>
+                      <button className="btn btn-warning" type="button">
+                        Hire
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
           {/* END OF EDIT PROFILE */}
 
