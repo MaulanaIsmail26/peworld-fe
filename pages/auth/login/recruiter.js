@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
 import Head from "next/head";
@@ -8,7 +9,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 export default function Recruiter() {
-  const router = useRouter;
+  const router = useRouter();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
@@ -18,13 +19,13 @@ export default function Recruiter() {
   //   console.log(getCookie("token"));
   // }, []);
 
-  // React.useEffect(() => {
-  //   let checkIsLogin = getCookie("token") && getCookie("profile");
+  React.useEffect(() => {
+    let checkIsLogin = getCookie("token") && getCookie("profile");
 
-  //   if (checkIsLogin) {
-  //     router.replace("/");
-  //   }
-  // }, []);
+    if (checkIsLogin) {
+      router.replace("/");
+    }
+  }, []);
 
   const handleSubmit = async () => {
     try {
