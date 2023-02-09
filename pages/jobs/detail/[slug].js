@@ -5,6 +5,7 @@ import style from "../../../styles/pages/detailStyle.module.scss";
 import Navbar from "@/components/organisms/navbar";
 import Footer from "@/components/organisms/footer";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import axios from "axios";
 
 export default function detail(props) {
@@ -65,9 +66,11 @@ export default function detail(props) {
               {/* BUTTON HIRE */}
               <div className={`row mb-4 ${style.buttonHire}`}>
                 <div className="d-grid gap-2 col-3 mx-auto ">
-                  <button className="btn btn-warning" type="button">
-                    Hire
-                  </button>
+                  <Link href={"/jobs/hire"} className="btn btn-warning">
+                    <button className="btn btn-warning" type="button">
+                      Hire
+                    </button>
+                  </Link>
                 </div>
               </div>
               {/* SKILLS AND CONTACT */}
