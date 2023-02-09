@@ -7,6 +7,7 @@ import axios from "axios";
 import { setCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { redirect } from "next/dist/server/api-utils";
 
 export default function Recruiter() {
   const router = useRouter();
@@ -23,7 +24,7 @@ export default function Recruiter() {
     let checkIsLogin = getCookie("token") && getCookie("profile");
 
     if (checkIsLogin) {
-      router.replace("/");
+      router.replace("/jobs/list");
     }
   }, []);
 
