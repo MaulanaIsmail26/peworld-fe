@@ -3,6 +3,7 @@ import Head from "next/head";
 import React from "react";
 import style from "../../styles/pages/editStyle.module.scss";
 import Navbar from "@/components/organisms/navbar";
+import Footer from "@/components/organisms/footer";
 
 export default function edit() {
   return (
@@ -171,7 +172,9 @@ export default function edit() {
             {/* END OF EDIT SKILLS */}
 
             {/* PENGALAMAN KERJA */}
-            <div className={`container py-3 shadow-sm ${style.cardPengalaman}`}>
+            <div
+              className={`container py-3 shadow-sm mb-4 ${style.cardPengalaman}`}
+            >
               <div
                 className={`row border-bottom border-2 py-3 ${style.subtitle}`}
               >
@@ -245,8 +248,113 @@ export default function edit() {
               </div>
             </div>
             {/* END OF PENGALAMAN KERJA */}
+
+            {/* PORTOFOLIO */}
+            <div className={`container py-3 mb-3 shadow-sm ${style.cardPortofolio}`}>
+              <div
+                className={`row border-bottom border-2 py-3 ${style.subtitle}`}
+              >
+                <div className="col-12 d-flex justify-content-center">
+                  <h4>Portofolio</h4>
+                </div>
+              </div>
+              {/* FORM */}
+              <div className={`row pt-4 pb-1 mt-2 ${style.aplikasi}`}>
+                <div className="col-6 px-5">
+                  <label for="namaAplikasi" class="form-label">
+                    Nama Aplikasi
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control mb-4"
+                    id="namaAplikasi"
+                    aria-describedby="emailHelp"
+                    placeholder="Masukan nama aplikasi"
+                  />
+                </div>
+                <div className="col-6 px-5">
+                  <label for="linkRepository" class="form-label">
+                    Link Repository
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control mb-4"
+                    id="linkRepository"
+                    aria-describedby="emailHelp"
+                    placeholder="Masukan link repository"
+                  />
+                </div>
+              </div>
+              {/* CHECK BOX */}
+              <div className={`row pt-2 pb-1 mb-4 ${style.checkRadio}`}>
+                <div className="col-6 px-5">
+                  <label
+                    for="linkRepository"
+                    className="form-label d-block mb-3"
+                  >
+                    Type Portofolio
+                  </label>
+                  <div className="form-check-inline me-5">
+                    <input
+                      className="form-check-input me-2"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                    />
+                    <label className="form-check-label" for="flexRadioDefault1">
+                      Aplikasi Mobile
+                    </label>
+                  </div>
+                  <div className="form-check-inline">
+                    <input
+                      className="form-check-input me-2"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault2"
+                      checked
+                    />
+                    <label className="form-check-label" for="flexRadioDefault2">
+                      Aplikasi Web
+                    </label>
+                  </div>
+                </div>
+              </div>
+              {/* INPUT IMAGE */}
+              <div className={`row pt-2 pb-1 ${style.checkRadio}`}>
+                <div className="col-6 px-5">
+                  <div>
+                    <label for="formFile" className="form-label">
+                      Upload Gambar
+                    </label>
+                    <input className="form-control" type="file" id="formFile" />
+                    <p
+                      style={{
+                        color: "#858D96",
+                        fontSize: "13px",
+                        marginTop: "5px",
+                      }}
+                    >
+                      Format : PNG, JPG or GIF | Size : 1080x1920 or 600x800
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* BUTTON */}
+              <div className={`row pb-1 mt-3 mb-4 ${style.button}`}>
+                <div className="col-12 px-5 d-grid gap-2 col-6 mx-auto">
+                  <button type="button" class="btn btn-outline-warning">
+                    Tambah Portofolio
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* END OF PORTOFOLIO */}
           </div>
           {/* END OF EDIT PROFILE */}
+
+          {/* FOOTER */}
+          <Footer />
+          {/* END OF FOOTER */}
         </div>
       </main>
     </>
