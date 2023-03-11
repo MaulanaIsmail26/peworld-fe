@@ -19,10 +19,15 @@ export default function list(props) {
   const [page, setPage] = React.useState(1);
   const [total, setTotal] = React.useState(Math.ceil(count / 3));
   const [sortIsOn, setSortIsOn] = React.useState(false);
-  // const [keyword, setKeyword] = React.useState("");
+  const [msgErr, setMsgErr] = React.useState("");
+  const [keyword, setKeyword] = React.useState("");
+  const [keywordSave, setKeywordSave] = React.useState("");
+  const [dataNull, setDataNull] = React.useState(false);
   // const [sort, setSort] = React.useState("");
 
+  // FEATURE PAGINATION
   const getDataByPage = (_page) => {
+    setDataNull(false);
     axios
       .get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=${_page}&order=ASC`
@@ -32,8 +37,10 @@ export default function list(props) {
       });
   };
 
+  // FEATURE SORTING
   const getDataBySort = (_sort) => {
     setSortIsOn(true);
+    setDataNull(false);
     axios
       .get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=15&sortBy=${_sort}`
@@ -41,6 +48,53 @@ export default function list(props) {
       .then(({ data }) => {
         setData(data?.data?.rows);
       });
+  };
+
+  // FEATURE SEARCH
+  const fetchByKeyword = () => {
+    setDataNull(false);
+    setSortIsOn(true);
+    if (keyword && keyword !== "") {
+      axios
+        .get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?keyword=${keyword}`
+        )
+        .then(({ data }) => {
+          console.log(data);
+          if (data?.data?.rows.length > 0) {
+            setData(data?.data?.rows);
+            setKeyword("");
+            // setRecipeNotFound(false);
+            // setSearchRecipeOn(true);
+            // setSortOn(false);
+          } else {
+            // console.log(data?.message)
+            setDataNull(true);
+            setKeyword("");
+            setMsgErr(`Job seekers with ${keywordSave} skills do not exist`);
+            // setRecipeNotFound(true);
+            // setSearchRecipeOn(true);
+            // setSortOn(false);
+          }
+        })
+        .catch(() => {
+          setData([]);
+        })
+        .finally(() => {
+          // setIsLoading(false);
+        });
+    } else {
+      setDataNull(false);
+      axios
+        .get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=${page}&order=ASC`
+        )
+        .then(({ data }) => {
+          setData(data?.data?.rows);
+          setSortIsOn(false);
+          setKeyword("");
+        });
+    }
   };
 
   return (
@@ -81,16 +135,20 @@ export default function list(props) {
                   <input
                     type="search"
                     className="form-control d-inline border-0"
-                    id="exampleFormControlInput1"
                     placeholder="Search for any skill"
-                    // onChange={(e) => {
-                    //   setKeyword(e.target.value);
-                    // }}
-                    // onKeyDown={(e) => {
-                    //   if (e.key === "Enter") {
-                    //     data;
-                    //   }
-                    // }}
+                    value={keyword}
+                    onChange={(e) => {
+                      setKeyword(e.target.value);
+                      setKeywordSave(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        // window.location.href = "/#popular-recipe";
+                        // setSearchRecipe(`Search Result : ${e.target.value}`);
+                        fetchByKeyword();
+                        // setIsLoading(true);
+                      }
+                    }}
                   />
                 </div>
                 {/* BTN SORT */}
@@ -126,7 +184,13 @@ export default function list(props) {
                         Sortir berdasarkan fulltime
                       </option> */}
                     </select>
-                    <button type="button" className="btn btn-primary rounded-1">
+                    <button
+                      type="button"
+                      className="btn btn-primary rounded-1"
+                      onClick={() => {
+                        fetchByKeyword();
+                      }}
+                    >
                       Search
                     </button>
                   </div>
@@ -136,17 +200,27 @@ export default function list(props) {
             {/* END OF SEARCH & SORT BAR */}
 
             {/* LIST WORKER */}
-            {data?.map((item, key) => (
-              <React.Fragment key={key}>
-                <CardJobList
-                  image={item?.["user.photo_profile"]}
-                  name={item?.[`user.fullname`]}
-                  job={item?.job}
-                  location={item?.domicile}
-                  skills={item?.skills}
-                />
-              </React.Fragment>
-            ))}
+            {dataNull ? (
+              <div className="row" style={{ width: "100%" }}>
+                <div className="col-12 text-center my-5">
+                  <h3>{msgErr}</h3>
+                </div>
+              </div>
+            ) : (
+              <>
+                {data?.map((item, key) => (
+                  <React.Fragment key={key}>
+                    <CardJobList
+                      image={item?.["user.photo_profile"]}
+                      name={item?.[`user.fullname`]}
+                      job={item?.job}
+                      location={item?.domicile}
+                      skills={item?.skills}
+                    />
+                  </React.Fragment>
+                ))}
+              </>
+            )}
 
             {/* END OF LIST WORKER */}
 
