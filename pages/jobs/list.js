@@ -23,7 +23,6 @@ export default function list(props) {
   const [keyword, setKeyword] = React.useState("");
   const [keywordSave, setKeywordSave] = React.useState("");
   const [dataNull, setDataNull] = React.useState(false);
-  // const [sort, setSort] = React.useState("");
 
   // FEATURE PAGINATION
   const getDataByPage = (_page) => {
@@ -64,17 +63,10 @@ export default function list(props) {
           if (data?.data?.rows.length > 0) {
             setData(data?.data?.rows);
             setKeyword("");
-            // setRecipeNotFound(false);
-            // setSearchRecipeOn(true);
-            // setSortOn(false);
           } else {
-            // console.log(data?.message)
             setDataNull(true);
             setKeyword("");
             setMsgErr(`Job seekers with ${keywordSave} skills do not exist`);
-            // setRecipeNotFound(true);
-            // setSearchRecipeOn(true);
-            // setSortOn(false);
           }
         })
         .catch(() => {
@@ -146,7 +138,6 @@ export default function list(props) {
                         // window.location.href = "/#popular-recipe";
                         // setSearchRecipe(`Search Result : ${e.target.value}`);
                         fetchByKeyword();
-                        // setIsLoading(true);
                       }
                     }}
                   />
