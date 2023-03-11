@@ -66,9 +66,9 @@ export default function detail(props) {
               {/* BUTTON HIRE */}
               <div className={`row mb-4 ${style.buttonHire}`}>
                 <div className="d-grid gap-2 col-3 mx-auto ">
-                  <Link href={"/jobs/hire"} className="btn btn-warning">
+                  <Link href={"/profile/edit"} className="btn btn-warning">
                     <button className="btn btn-warning" type="button">
-                      Hire
+                      Edit
                     </button>
                   </Link>
                 </div>

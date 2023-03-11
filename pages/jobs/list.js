@@ -104,15 +104,15 @@ export default function list(props) {
                       <option selected disabled>
                         Kategori
                       </option>
-                      <option value="name_asc">Sortir berdasarkan nama</option>
+                      {/* <option value="name_asc">Sortir berdasarkan nama</option> */}
                       <option value="skills">Sortir berdasarkan Skill</option>
                       <option value="domicile">
                         Sortir berdasarkan Lokasi
                       </option>
                       <option value="job">Sortir berdasarkan job</option>
-                      <option value="release_desc">
+                      {/* <option value="release_desc">
                         Sortir berdasarkan fulltime
-                      </option>
+                      </option> */}
                     </select>
                     <button type="button" className="btn btn-primary rounded-1">
                       Search
