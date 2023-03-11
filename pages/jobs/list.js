@@ -18,23 +18,29 @@ export default function list(props) {
   const [data, setData] = React.useState(rows);
   const [page, setPage] = React.useState(1);
   const [total, setTotal] = React.useState(Math.ceil(count / 3));
+  const [sortIsOn, setSortIsOn] = React.useState(false);
   // const [keyword, setKeyword] = React.useState("");
   // const [sort, setSort] = React.useState("");
 
-  const getDataByPage = async (_page) => {
-    const jobList = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=${_page}&order=ASC`
-    );
-    const convertData = jobList.data;
-    setData(convertData.data.rows);
+  const getDataByPage = (_page) => {
+    axios
+      .get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=3&page=${_page}&order=ASC`
+      )
+      .then(({ data }) => {
+        setData(data?.data?.rows);
+      });
   };
 
-  const getDataBySort = async (_sort) => {
-    const jobList = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=10&sortBy=${_sort}`
-    );
-    const convertData = jobList.data;
-    setData(convertData.data.rows);
+  const getDataBySort = (_sort) => {
+    setSortIsOn(true);
+    axios
+      .get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/list?limit=15&sortBy=${_sort}`
+      )
+      .then(({ data }) => {
+        setData(data?.data?.rows);
+      });
   };
 
   return (
@@ -98,13 +104,19 @@ export default function list(props) {
                       className="form-select border-0"
                       aria-label="Default select example"
                       onChange={(e) => {
-                        getDataBySort(e.target.value);
+                        if (e.target.value === "All") {
+                          getDataByPage(page);
+                          setSortIsOn(false);
+                        } else {
+                          getDataBySort(e.target.value);
+                        }
                       }}
                     >
                       <option selected disabled>
                         Kategori
                       </option>
                       {/* <option value="name_asc">Sortir berdasarkan nama</option> */}
+                      <option value="All">All</option>
                       <option value="skills">Sortir berdasarkan Skill</option>
                       <option value="domicile">
                         Sortir berdasarkan Lokasi
@@ -142,53 +154,29 @@ export default function list(props) {
             <div
               className={`container d-flex justify-content-center ${style.pagination}`}
             >
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  {/* <li
-                    class="page-item"
-                    onClick={() => {
-                      if (page > 1) {
-                        getDataByPage(page - 1);
-                        setPage(page - 1);
-                      }
-                    }}
-                  >
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li> */}
-                  {[...new Array(total)].map((item, key) => {
-                    let currentPage = ++key;
-                    return (
-                      <li
-                        class={`page-item ${
-                          page === currentPage ? "active" : ""
-                        }`}
-                        key={currentPage}
-                        onClick={() => {
-                          getDataByPage(currentPage);
-                          setPage(currentPage);
-                        }}
-                      >
-                        <a class="page-link">{currentPage}</a>
-                      </li>
-                    );
-                  })}
-                  {/* <li
-                    class="page-item"
-                    onClick={() => {
-                      if (page < total) {
-                        getDataByPage(page + 1);
-                        setPage(page + 1);
-                      }
-                    }}
-                  >
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li> */}
-                </ul>
-              </nav>
+              {!sortIsOn && (
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {[...new Array(total)].map((item, key) => {
+                      let currentPage = ++key;
+                      return (
+                        <li
+                          class={`page-item ${
+                            page === currentPage ? "active" : ""
+                          }`}
+                          key={currentPage}
+                          onClick={() => {
+                            getDataByPage(currentPage);
+                            setPage(currentPage);
+                          }}
+                        >
+                          <a class="page-link">{currentPage}</a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+              )}
             </div>
             {/* END OF PAGINATION */}
           </section>
