@@ -37,6 +37,7 @@ export default function Recruiter() {
 
       setIsLoading(false);
       setError(null);
+      router.replace("/auth/login");
     } catch (error) {
       setError(
         error?.response?.data?.messages ?? "Something wrong in our server"
